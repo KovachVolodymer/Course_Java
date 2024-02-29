@@ -27,6 +27,44 @@ public class Main {
         System.out.println(numbers.size());
     }
 
+    public static void withJava6()throws FileNotFoundException, IOException{
+        ArrayList<Integer> numbers=new ArrayList<>();
+        BufferedReader br=null;
+        try {
+            br=new BufferedReader(new FileReader("E:\\Навчання\\10n.txt"));
+            String file;
+            while ((file = br.readLine())!= null)
+            {
+                numbers.add(Integer.valueOf(file));
+            }
+        } finally {
+            if (br!=null) {
+                br.close();
+            }
+        }
+        System.out.println(numbers.size());
+    }
+
+    public static void withScanner()throws FileNotFoundException, IOException{
+        ArrayList<Integer> numbers=new ArrayList<>();
+        Scanner sc=null;
+        try {
+            sc=new Scanner(new FileReader("E:\\Навчання\\10n.txt"));
+            while (sc.hasNextInt()) {
+                numbers.add(sc.nextInt());
+            }
+        } finally {
+            if (sc!=null) {
+                sc.close();
+            }
+        }
+        System.out.println(numbers.size());
+    }
+
+
+
+
+
 
 
 }
