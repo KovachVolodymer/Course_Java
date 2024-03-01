@@ -11,8 +11,11 @@ public class Main {
     public static void main(String[] args) throws IOException {
        long start=System.nanoTime();
         withJava7();
-       long end=System.nanoTime();
-       System.out.println((end-start)/1_000_000_000.0);
+        long end=System.nanoTime();
+
+       withJava17();
+       end=System.nanoTime();
+        System.out.println((end-start)/1_000_000_000.0);
     }
 
     public static void withJava7()throws FileNotFoundException, IOException{
@@ -56,6 +59,18 @@ public class Main {
         } finally {
             if (sc!=null) {
                 sc.close();
+            }
+        }
+        System.out.println(numbers.size());
+    }
+
+    public static void withJava17()throws FileNotFoundException, IOException{
+        ArrayList<Integer> numbers=new ArrayList<>();
+        try (var br=new BufferedReader(new FileReader("E:\\Навчання\\10n.txt")) ) {
+            String file;
+            while ((file = br.readLine())!= null)
+            {
+                numbers.add(Integer.valueOf(file));
             }
         }
         System.out.println(numbers.size());
